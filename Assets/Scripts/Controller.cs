@@ -10,18 +10,9 @@ public class Controller : MonoBehaviour
     float horizontalInput;
     float verticalInput;
     public Transform orientation;
+    public Transform cameraPos;
     Vector3 moveDirection;
-    [SerializeField] float speed = 3;
-    [Range(0.1f, 9f)] [SerializeField] float playerSensitivity = 2f;
-    [Range(0f, 90f)] [SerializeField] float yRotationLimit = 88f;
-    [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
-    const string yAxis = "Mouse Y";
-    public float Sensitivity
-    {
-        get { return playerSensitivity; }
-        set { playerSensitivity = value; }
-
-    }
+    [SerializeField] float speed = 5;
     private void Awake()
     {
         instance = this;
@@ -39,9 +30,6 @@ public class Controller : MonoBehaviour
     void Update()    
     {
         MyInput();
-        rotation.y += Input.GetAxis(yAxis) * playerSensitivity;
-        var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
-        transform.rotation = yQuat;
     }
 
     private void FixedUpdate()
