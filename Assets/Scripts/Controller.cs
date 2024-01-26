@@ -37,7 +37,6 @@ public class Controller : MonoBehaviour
     void Start()
     {
         Cursor.lockState=CursorLockMode.Locked;
-        Cursor.visible = false;
         rb.freezeRotation=true;
     }
 
