@@ -8,9 +8,11 @@ public class Controller : MonoBehaviour
     public Rigidbody rb;
     float xRotation;
     float yRotation;
+    public float groundDrag;
     float horizontalInput;
     float verticalInput;
     Vector3 moveDirection;
+    [SerializeField] float speed = 3; 
 
     private void Awake()
     {
@@ -19,12 +21,43 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb.freezeRotation=true;
     }
 
     // Update is called once per frame
-    void Update()
+    void Update()    
     {
-        
+        MyInput();
+       
+    }
+
+    private void FixedUpdate()
+    {
+        MovePlayer();
+        SpeedControll();
+        rb.drag = groundDrag;
+    }
+
+    public void MyInput()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+    }
+
+    public void MovePlayer()
+    {
+        moveDirection = Vector3.forward * verticalInput + Vector3.right * horizontalInput;
+        rb.AddForce(moveDirection.normalized * speed * 10f , ForceMode.Force);
+    }
+
+    public void SpeedControll()
+    {
+        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if (flatVel.magnitude > speed)
+        {
+            Vector3 limitedVel = flatVel.normalized * speed;
+            rb.velocity = new Vector3(limitedVel.x, rb.velocity.y, limitedVel.z);
+        }
     }
 }
