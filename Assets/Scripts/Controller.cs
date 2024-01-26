@@ -6,29 +6,22 @@ public class Controller : MonoBehaviour
 {
     Controller instance;
     public Rigidbody rb;
-    float xRotation;
-    float yRotation;
     public float groundDrag;
     float horizontalInput;
     float verticalInput;
     public Transform orientation;
     Vector3 moveDirection;
     [SerializeField] float speed = 3;
-    [Range(0.1f, 9f)] [SerializeField] float sensitivity = 2f;
-    [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
+    [Range(0.1f, 9f)] [SerializeField] float playerSensitivity = 2f;
     [Range(0f, 90f)] [SerializeField] float yRotationLimit = 88f;
-    const string xAxis = "Mouse X";
+    [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
     const string yAxis = "Mouse Y";
     public float Sensitivity
     {
-        get { return sensitivity; }
-        set { sensitivity = value; }
+        get { return playerSensitivity; }
+        set { playerSensitivity = value; }
 
     }
-
-    Vector2 rotation = Vector2.zero;
-     
-
     private void Awake()
     {
         instance = this;
@@ -37,20 +30,18 @@ public class Controller : MonoBehaviour
     void Start()
     {
         
-        rb.freezeRotation=true;
+        //rb.freezeRotation=true;
     }
 
+
+    Vector2 rotation = Vector2.zero;
     // Update is called once per frame
     void Update()    
     {
         MyInput();
-        rotation.x += Input.GetAxis(xAxis) * sensitivity;
-        rotation.y += Input.GetAxis(yAxis) * sensitivity;
-        rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
-        var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
+        rotation.y += Input.GetAxis(yAxis) * playerSensitivity;
         var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
-
-        transform.localRotation = xQuat * yQuat;
+        transform.rotation = yQuat;
     }
 
     private void FixedUpdate()
