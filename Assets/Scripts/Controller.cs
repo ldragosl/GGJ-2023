@@ -11,8 +11,23 @@ public class Controller : MonoBehaviour
     public float groundDrag;
     float horizontalInput;
     float verticalInput;
+    public Transform orientation;
     Vector3 moveDirection;
-    [SerializeField] float speed = 3; 
+    [SerializeField] float speed = 3;
+    [Range(0.1f, 9f)] [SerializeField] float sensitivity = 2f;
+    [Tooltip("Limits vertical camera rotation. Prevents the flipping that happens when rotation goes above 90.")]
+    [Range(0f, 90f)] [SerializeField] float yRotationLimit = 88f;
+    const string xAxis = "Mouse X";
+    const string yAxis = "Mouse Y";
+    public float Sensitivity
+    {
+        get { return sensitivity; }
+        set { sensitivity = value; }
+
+    }
+
+    Vector2 rotation = Vector2.zero;
+     
 
     private void Awake()
     {
@@ -21,6 +36,7 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         rb.freezeRotation=true;
     }
 
@@ -28,7 +44,13 @@ public class Controller : MonoBehaviour
     void Update()    
     {
         MyInput();
-       
+        rotation.x += Input.GetAxis(xAxis) * sensitivity;
+        rotation.y += Input.GetAxis(yAxis) * sensitivity;
+        rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
+        var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
+        var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
+
+        transform.localRotation = xQuat * yQuat;
     }
 
     private void FixedUpdate()
@@ -46,7 +68,7 @@ public class Controller : MonoBehaviour
 
     public void MovePlayer()
     {
-        moveDirection = Vector3.forward * verticalInput + Vector3.right * horizontalInput;
+        moveDirection = orientation.transform.forward * verticalInput + orientation.transform.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * speed * 10f , ForceMode.Force);
     }
 
