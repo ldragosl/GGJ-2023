@@ -14,7 +14,7 @@ public class LaughSystem : MonoBehaviour
     void Start()
     {
         _currentLaughter = _minLaughter;
-        LaughMeter.SetMaxLAughter(_minLaughter);
+        laughMeter.SetMaxLaughter(_minLaughter);
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class LaughSystem : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             _currentLaughter += Random.Range(0.6f, 1.5f);
-            LaughterDamage = Random.Range(0.6f, 1.5f);
+            LaughterDamage(Random.Range(0.6f, 1.5f));
         }
     }
 
@@ -35,7 +35,7 @@ public class LaughSystem : MonoBehaviour
         {
             _currentLaughter = 0;
             Destroy(gameObject);
-            LaughMeter.SetLAughter(_currentLaughter);
+            laughMeter.SetLaughter(_currentLaughter);
 
         }
     }

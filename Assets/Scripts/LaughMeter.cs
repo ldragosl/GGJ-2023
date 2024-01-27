@@ -13,7 +13,7 @@ public class LaughMeter : MonoBehaviour
         _laughterbar.value = laughter;
     }
 
-    public void SetLaughter(float aughter)
+    public void SetLaughter(float laughter)
     {
         _laughterbar.value = laughter;
     }
