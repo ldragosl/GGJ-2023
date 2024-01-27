@@ -25,7 +25,8 @@ public class Rats : MonoBehaviour
 
     public void retakePan()
     {
-        stolePan = true;
+        stolePan = false;
+        timeToSteal = Random.Range(3f, 6f);
     }
 
     void setRandomTarget()
@@ -40,7 +41,6 @@ public class Rats : MonoBehaviour
         Pan panComp = GameObject.FindGameObjectWithTag("Pan").GetComponent<Pan>();
         if (!wantsToStealPan && !stolePan)
         {
-
             if (Time.time - panComp.LastPickedupTime > timeToSteal && !panComp.isPicked)
             {
                 wantsToStealPan = true;
