@@ -12,18 +12,18 @@ public class PickupableObject : MonoBehaviour
 
     public virtual void OnPickup()
     {
-        gameObject.GetComponent<Rigidbody>().isKinematic = true;
-        gameObject.transform.position = hand.position;
-        gameObject.transform.rotation = Quaternion.Euler(-90, 0, 180);
-        gameObject.transform.parent = hand;
-        gameObject.GetComponent<Collider>().enabled = false;
+        GetComponent<Rigidbody>().isKinematic = true;
+        transform.position = hand.position;
+        transform.rotation = Quaternion.Euler(-90, 0, 180);
+        transform.parent = hand;
+        GetComponent<Collider>().enabled = false;
     }
 
     public virtual void Drop()
     {
-        gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        gameObject.transform.parent = null;
-        gameObject.GetComponent<Collider>().enabled = true;
+        GetComponent<Rigidbody>().isKinematic = false;
+        transform.parent = null;
+        GetComponent<Collider>().enabled = true;
     }
 
     // Update is called once per frame
@@ -31,4 +31,6 @@ public class PickupableObject : MonoBehaviour
     {
         
     }
+
+
 }
