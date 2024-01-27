@@ -32,7 +32,6 @@ public class GrabObjects : MonoBehaviour
                     pickUpText.gameObject.SetActive(true);
                     if (Input.GetMouseButtonDown(0))
                     {
-                        
                         pickedItem = hit.collider.gameObject;
                         pickedItem.GetComponent<Rigidbody>().isKinematic = true;
                         pickedItem.transform.position = hand.position;
@@ -48,10 +47,13 @@ public class GrabObjects : MonoBehaviour
         else
         if (isPicked == true)
         {
-            pickedItem.GetComponent<Rigidbody>().isKinematic = false;
-            pickedItem.transform.parent = null;
-            isPicked = false;
-            pickedItem.GetComponent<Collider>().enabled = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+                pickedItem.GetComponent<Rigidbody>().isKinematic = false;
+                pickedItem.transform.parent = null;
+                isPicked = false;
+                pickedItem.GetComponent<Collider>().enabled = true;
+            }
         }
     }
 }
