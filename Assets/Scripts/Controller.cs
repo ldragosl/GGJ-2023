@@ -21,7 +21,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         
-        //rb.freezeRotation=true;
+        rb.freezeRotation=true;
     }
 
 
