@@ -6,6 +6,7 @@ public class PickupableObject : MonoBehaviour
 {
     public Transform hand;
     GrabObjects grabObject;
+    public bool isPicked;
     void Start()
     {
         grabObject = GrabObjects.singleton;
