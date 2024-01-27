@@ -20,6 +20,7 @@ public class GrabObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pickUpText.enabled = false;
         if (isPicked == false)
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -28,7 +29,6 @@ public class GrabObjects : MonoBehaviour
             {
                 if (hit.collider.tag == "Interactable" && Vector3.Distance(hit.collider.gameObject.transform.position, gameObject.transform.position) <= range)
                 {
-                    Debug.Log("in range up");
                     pickUpText.gameObject.SetActive(true);
                     if (Input.GetMouseButtonDown(0))
                     {

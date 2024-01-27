@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Rat
   - Interactable
+  - Stove
   layers:
   - Default
   - TransparentFX
