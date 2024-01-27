@@ -44,30 +44,32 @@ public class GrabObjects : MonoBehaviour
                         pickUpText.enabled = false;
                     }
                 }
+            }
+        }
 
-                if(hit.collider.tag == "Stove" && isPicked==true)
-                {
-                    Debug.Log("stove in sight");
-                    if (Input.GetMouseButtonDown(0))
+
+        if (isPicked == true)
+        {
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (Physics.Raycast(mouseRay, out hit))
+                    if (hit.collider.tag == "Stove")
                     {
                         pickedItem.transform.position = stoveSpot.position;
                         pickedItem.transform.parent = null;
                         isPicked = false;
                         pickedItem.GetComponent<Collider>().enabled = true;
                     }
-                    
-                }
-            }
-        }
-        else
-        if (isPicked == true)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                pickedItem.GetComponent<Rigidbody>().isKinematic = false;
-                pickedItem.transform.parent = null;
-                isPicked = false;
-                pickedItem.GetComponent<Collider>().enabled = true;
+                    else
+                    {
+                        pickedItem.GetComponent<Rigidbody>().isKinematic = false;
+                        pickedItem.transform.parent = null;
+                        isPicked = false;
+                        pickedItem.GetComponent<Collider>().enabled = true;
+                    }
             }
         }
     }
