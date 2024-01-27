@@ -15,13 +15,14 @@ public class CameraMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         float mouseX= Input.GetAxisRaw(xAxis) * Time.deltaTime * sensitivity;
         float mouseY= Input.GetAxisRaw(yAxis) * Time.deltaTime * sensitivity;
         rotation.x -= mouseY;
