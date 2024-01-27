@@ -5,11 +5,10 @@ using UnityEngine;
 public class PickupableObject : MonoBehaviour
 {
     public Transform hand;
-
-    public bool isPicked;
+    GrabObjects grabObject;
     void Start()
     {
-
+        grabObject = GrabObjects.singleton;
     }
 
     public virtual void OnPickup()
@@ -19,7 +18,7 @@ public class PickupableObject : MonoBehaviour
         transform.rotation = Quaternion.Euler(-90, 0, 180);
         transform.parent = hand;
         GetComponent<Collider>().enabled = false;
-        isPicked = true;
+        
     }
 
     public virtual void Drop()
@@ -27,7 +26,7 @@ public class PickupableObject : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = false;
         transform.parent = null;
         GetComponent<Collider>().enabled = true;
-        isPicked=false;
+        
     }
 
     // Update is called once per frame

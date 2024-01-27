@@ -39,6 +39,7 @@ public class GrabObjects : MonoBehaviour
                         currentItem = hit.collider.gameObject;
                         GrabObject(currentItem);
                     }
+                    
                 }
             }
         }
