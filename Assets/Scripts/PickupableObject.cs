@@ -5,9 +5,10 @@ using UnityEngine;
 public class PickupableObject : MonoBehaviour
 {
     public Transform hand;
+
     void Start()
     {
-        
+
     }
 
     public virtual void OnPickup()

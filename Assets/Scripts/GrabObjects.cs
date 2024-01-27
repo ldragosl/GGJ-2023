@@ -11,10 +11,11 @@ public class GrabObjects : MonoBehaviour
     public int range = 4;
     public TMP_Text pickUpText;
     public GameObject currentItem;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        
         isPicked = false;
     }
 
