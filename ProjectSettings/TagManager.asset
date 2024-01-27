@@ -7,6 +7,8 @@ TagManager:
   - Rat
   - Interactable
   - Stove
+  - Pan
+  - Meat
   layers:
   - Default
   - TransparentFX
