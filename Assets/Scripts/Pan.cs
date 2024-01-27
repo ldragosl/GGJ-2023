@@ -16,6 +16,13 @@ public class Pan : PickupableObject
     public override void OnPickup()
     {
         base.OnPickup();
+
+        GameObject[] rats = GameObject.FindGameObjectsWithTag("Rat");
+        foreach(GameObject rat in rats)
+        {
+            Rats ratComp = rat.GetComponent<Rats>();
+            ratComp.retakePan();
+        }
     }
 
     public override void Drop()
