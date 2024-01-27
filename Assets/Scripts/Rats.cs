@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Rats : MonoBehaviour
 {
-    public Vector3 target;
     public float ratSpeedMin = 2f;
     public float ratSpeedMax = 6f;
     public float targetY = 0.2f;
@@ -13,8 +12,8 @@ public class Rats : MonoBehaviour
     public float targetXMin = -2.8f;
     public float targetXMax = 4.4f;
 
-    private float initialHeight;
     private float ratSpeed = 5f;
+    private Vector3 target;
     // Start is called before the first frame update
     void Start()
     {
