@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rats : MonoBehaviour
 {
+    public float timeToSteal = 5f;
     public float ratSpeedMin = 2f;
     public float ratSpeedMax = 6f;
     public float targetY = 0.2f;
@@ -13,6 +14,7 @@ public class Rats : MonoBehaviour
     public float targetXMax = 4.4f;
 
     private float ratSpeed = 5f;
+    private bool stolePan;
     private Vector3 target;
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,12 @@ public class Rats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Pan panComp = GameObject.FindGameObjectWithTag("Pan").GetComponent<Pan>();
+        if(Time.time - panComp.LastPickedupTime > timeToSteal && !panComp.isPicked)
+        {
+            stolePan = true;
+        }
+
         transform.LookAt(target);
         transform.position += transform.forward * ratSpeed * Time.deltaTime;
         if(Vector3.Distance(transform.position, target) < 0.1f)

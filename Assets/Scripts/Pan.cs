@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Pan : PickupableObject
 {
-    float LastPickedupTime;
+    public float LastPickedupTime;
     CookableMeat meat;
     // Start is called before the first frame update
     void Start()

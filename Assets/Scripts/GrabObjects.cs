@@ -5,6 +5,8 @@ using TMPro;
 
 public class GrabObjects : MonoBehaviour
 {
+    public static GrabObjects singleton;
+
     public Transform hand;
     public Transform stoveSpot;
     public bool isPicked;
@@ -15,6 +17,7 @@ public class GrabObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        singleton = this;
         isPicked = false;
     }
 
