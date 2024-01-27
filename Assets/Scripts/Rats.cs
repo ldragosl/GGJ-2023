@@ -14,7 +14,7 @@ public class Rats : MonoBehaviour
     public float targetXMax = 4.4f;
 
     private float ratSpeed = 5f;
-    private bool stolePan;
+    private bool wantsToStealPan;
     private Vector3 target;
     // Start is called before the first frame update
     void Start()
@@ -31,10 +31,14 @@ public class Rats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pan panComp = GameObject.FindGameObjectWithTag("Pan").GetComponent<Pan>();
-        if(Time.time - panComp.LastPickedupTime > timeToSteal && !panComp.isPicked)
+        if (!wantsToStealPan)
         {
-            stolePan = true;
+            Pan panComp = GameObject.FindGameObjectWithTag("Pan").GetComponent<Pan>();
+            if (Time.time - panComp.LastPickedupTime > timeToSteal && !panComp.isPicked)
+            {
+                wantsToStealPan = true;
+                target = panComp.transform.position;
+            }
         }
 
         transform.LookAt(target);
