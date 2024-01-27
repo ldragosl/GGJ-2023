@@ -2037,7 +2037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9104702001718146162, guid: 042b0ab38316f3446a39521dc6436846, type: 3}
       propertyPath: m_TagString
-      value: Rat
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4301,7 +4301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f20df0ce3beac418704ae04cb0a1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hand: {fileID: 0}
+  hand: {fileID: 606872183}
   isPicked: 0
 --- !u!1001 &1795978525
 PrefabInstance:

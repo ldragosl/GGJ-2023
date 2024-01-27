@@ -6,7 +6,6 @@ using UnityEngine;
 public class Pan : PickupableObject
 {
     public float LastPickedupTime;
-    CookableMeat meat;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +20,10 @@ public class Pan : PickupableObject
         foreach(GameObject rat in rats)
         {
             Rats ratComp = rat.GetComponent<Rats>();
-            ratComp.retakePan();
+            if (ratComp != null)
+            {
+                ratComp.retakePan();
+            }
         }
     }
 
