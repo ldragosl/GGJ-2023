@@ -6,10 +6,12 @@ using TMPro;
 public class GrabObjects : MonoBehaviour
 {
     public Transform hand;
+    public Transform stoveSpot;
     GameObject pickedItem;
     public bool isPicked;
     public int range = 4;
     public TMP_Text pickUpText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,19 @@ public class GrabObjects : MonoBehaviour
                         isPicked = true;
                         pickUpText.enabled = false;
                     }
+                }
+
+                if(hit.collider.tag == "Stove" && isPicked==true)
+                {
+                    Debug.Log("stove in sight");
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        pickedItem.transform.position = stoveSpot.position;
+                        pickedItem.transform.parent = null;
+                        isPicked = false;
+                        pickedItem.GetComponent<Collider>().enabled = true;
+                    }
+                    
                 }
             }
         }
