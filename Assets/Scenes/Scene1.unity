@@ -271,6 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 606872183}
+  isPicked: 0
+  LastPickedupTime: 0
 --- !u!1001 &105045131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1024,6 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d93dfbd6768e2d46b185e3731d20489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToSteal: 5
   ratSpeedMin: 2
   ratSpeedMax: 6
   targetY: 0.2
@@ -2032,6 +2035,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat
       objectReference: {fileID: 0}
+    - target: {fileID: 9104702001718146162, guid: 042b0ab38316f3446a39521dc6436846, type: 3}
+      propertyPath: m_TagString
+      value: Rat
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2530,6 +2537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 606872183}
+  isPicked: 0
 --- !u!1001 &876164183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4294,6 +4302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hand: {fileID: 0}
+  isPicked: 0
 --- !u!1001 &1795978525
 PrefabInstance:
   m_ObjectHideFlags: 0

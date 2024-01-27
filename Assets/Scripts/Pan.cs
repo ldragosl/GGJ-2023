@@ -16,13 +16,13 @@ public class Pan : PickupableObject
     public override void OnPickup()
     {
         base.OnPickup();
-
-        LastPickedupTime = Time.time;
     }
 
     public override void Drop()
     {
         base.Drop();
+
+        LastPickedupTime = Time.time;
     }
 
     // Update is called once per frame

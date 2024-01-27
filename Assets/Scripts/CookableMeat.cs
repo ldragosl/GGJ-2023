@@ -17,6 +17,7 @@ public class CookableMeat : MonoBehaviour
     void Start()
     {
         meatMat = new Material(meatExteriour.GetComponent<MeshRenderer>().material);
+        meatMat.color = rawColor;
         meatExteriour.GetComponent<MeshRenderer>().material = meatMat;
     }
 
