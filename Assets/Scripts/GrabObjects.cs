@@ -29,9 +29,10 @@ public class GrabObjects : MonoBehaviour
                 if (hit.collider.tag == "Interactable" && Vector3.Distance(hit.collider.gameObject.transform.position, gameObject.transform.position) <= range)
                 {
                     Debug.Log("in range up");
-                    
+                    pickUpText.gameObject.SetActive(true);
                     if (Input.GetMouseButtonDown(0))
                     {
+                        
                         pickedItem = hit.collider.gameObject;
                         pickedItem.GetComponent<Rigidbody>().isKinematic = true;
                         pickedItem.transform.position = hand.position;
