@@ -17,11 +17,7 @@ public class GrabObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-        
-=======
         singleton = this;
->>>>>>> 5705f299226ca7674514a5cc45de0b3e7e9527eb
         isPicked = false;
     }
 
