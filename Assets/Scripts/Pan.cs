@@ -1,14 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Pan : MonoBehaviour
+public class Pan : PickupableObject
 {
-    CookableMeat? meat;
+    float LastPickedupTime;
+    CookableMeat meat;
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public override void OnPickup()
+    {
+        base.OnPickup();
+
+        LastPickedupTime = Time.time;
+    }
+
+    public override void Drop()
+    {
+
     }
 
     // Update is called once per frame
