@@ -5,7 +5,8 @@ using UnityEngine;
 public class Rats : MonoBehaviour
 {
     public Vector3 target;
-    public float ratSpeed = 5f;
+    public float ratSpeedMin = 2f;
+    public float ratSpeedMax = 6f;
     public float targetY = 0.2f;
     public float targetZMin = -3.8f;
     public float targetZMax = 1.1f;
@@ -13,6 +14,7 @@ public class Rats : MonoBehaviour
     public float targetXMax = 4.4f;
 
     private float initialHeight;
+    private float ratSpeed = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class Rats : MonoBehaviour
     void setRandomTarget()
     {
         target = new Vector3(Random.Range(targetXMin, targetXMax), targetY, Random.Range(targetZMin, targetZMax));
+        ratSpeed = Random.Range(ratSpeedMin, ratSpeedMax);
     }
 
     // Update is called once per frame
