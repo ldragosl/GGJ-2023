@@ -48,6 +48,7 @@ public class Controller : MonoBehaviour
     public void MovePlayer()
     {
         moveDirection = orientation.transform.forward * verticalInput + orientation.transform.right * horizontalInput;
+        moveDirection.y = 0f;
         rb.AddForce(moveDirection.normalized * speed * 10f , ForceMode.Force);
     }
 
