@@ -22,7 +22,7 @@ public class Pan : PickupableObject
 
     public override void Drop()
     {
-
+        base.Drop();
     }
 
     // Update is called once per frame
