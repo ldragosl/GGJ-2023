@@ -28,7 +28,7 @@ public class Rats : MonoBehaviour
     {
         if (stolePan == true)
         {
-            GameObject.Find("King").GetComponent<KingBehaviour>().AddLaughter(10);
+            GameObject.FindGameObjectWithTag("KingUI").GetComponent<KingBehaviour>().AddLaughter(10);
         }
             stolePan = false;
         timeToSteal = Random.Range(3f, 6f);

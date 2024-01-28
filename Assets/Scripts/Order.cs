@@ -27,7 +27,7 @@ public class Order : MonoBehaviour
     {
         fulfilled = true;
         GameObject.FindGameObjectWithTag("ScoreUI").GetComponent<ScoreController>().addScore(-1);
-        GameObject.Find("King").GetComponent<KingBehaviour>().AddLaughter(5);
+        GameObject.FindGameObjectWithTag("KingUI").GetComponent<KingBehaviour>().AddLaughter(5);
         orderPlacer.AdvanceState();
     }
 }
