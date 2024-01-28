@@ -26,7 +26,6 @@ public class CookableMeat : MonoBehaviour
     }
 
     public bool isFullyCooked() {
-        particles.SetActive(true);
         return cookValue > 1f; 
     }
 
@@ -40,6 +39,8 @@ public class CookableMeat : MonoBehaviour
                 if (transform.parent != null && transform.parent.tag == "Pan")
                 {
                     cookValue += Time.deltaTime / cookTime;
+                    if(cookValue >=1f)
+                        particles.SetActive(true);
                     meatMat.color = Color.Lerp(rawColor, cookColor, cookValue);
                 }
             }
