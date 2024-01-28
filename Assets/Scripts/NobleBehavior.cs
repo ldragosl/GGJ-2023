@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class NobleBehavior : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class NobleBehavior : MonoBehaviour
     [SerializeField]
     private NoblePositions _positions;
     private NavMeshAgent _agent;
+
+    [SerializeField]
+    private Image _orderImage;
 
     private int _seatIndex;
     private int _waitIndex;
@@ -31,6 +35,7 @@ public class NobleBehavior : MonoBehaviour
 
     private void Start()
     {
+        _orderImage.enabled = false;
         _seatIndex = _positions.GetSeat();
         _agent.destination = _positions._tablePositions[_seatIndex].position.position;
         _waitTime = Random.Range(_waitMin, _waitMax + 1);
@@ -59,6 +64,7 @@ public class NobleBehavior : MonoBehaviour
         if (_currentState == _states.Waiting)
         {
             _currentState = _states.Seated;
+            _orderImage.enabled = false;
             var temp = _positions._waitPositions[_waitIndex];
             temp.taken = false;
             _positions._waitPositions[_waitIndex] = temp;
@@ -68,6 +74,7 @@ public class NobleBehavior : MonoBehaviour
         else
         {
             _currentState = _states.Waiting;
+            _orderImage.enabled = true;
             OrderManager.instance.placeNewOrder(this);
             var temp = _positions._tablePositions[_seatIndex];
             temp.taken = false;
