@@ -13,6 +13,7 @@ public class GrabObjects : MonoBehaviour
     public int range = 4;
     public TMP_Text pickUpText;
     public GameObject currentItem;
+    public GameObject currentMeat;
     public bool hasMeat = false;
 
     // Start is called before the first frame update
@@ -44,10 +45,11 @@ public class GrabObjects : MonoBehaviour
                 {
                     if (currentItem.tag == "Pan" && hasMeat == false)
                     {
+                        currentMeat = hit.collider.gameObject;
                        // hit.collider.gameObject.transform.parent = currentItem.transform;
-                        GrabObject(hit.collider.gameObject);
-                        hit.collider.gameObject.transform.parent = currentItem.transform;
-                        hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                        GrabObject(currentMeat);
+                        currentMeat.transform.parent = currentItem.transform;
+                        currentMeat.GetComponent<BoxCollider>().enabled = false;
                         hasMeat = true;
                     }
                 }
@@ -77,10 +79,23 @@ public class GrabObjects : MonoBehaviour
                 }
             }
             
+        }
+
+        if (Input.GetMouseButtonDown(1) && isPicked == true)
+        {
+            if(currentItem.tag=="Pan" && hasMeat==true)
+            {
+                currentMeat.transform.parent = null;
+                currentMeat.GetComponent<BoxCollider>().enabled = true  ;
+                hasMeat = false;
+                DropItem(currentMeat);
+            }
+            else
             {
                 DropItem(currentItem);
                 isPicked = false;
             }
+            
         }
     }
     
