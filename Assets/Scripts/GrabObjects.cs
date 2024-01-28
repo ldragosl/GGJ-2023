@@ -52,7 +52,7 @@ public class GrabObjects : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 if (Physics.Raycast(mouseRay, out hit))
-                    if (hit.collider.tag == "Stove")
+                    if (hit.collider.tag == "Stove" && currentItem.tag == "Pan")
                     {
                         currentItem.transform.position = stoveSpot.position;
                         currentItem.transform.parent = null;
