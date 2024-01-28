@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class NobleBehavior : MonoBehaviour
 {
-    private const float _waitMax = 10.0f;
-    private const float _waitMin = 5.0f;
+    private const float _waitMax = 25.0f;
+    private const float _waitMin = 10.0f;
     private float _waitTime = 0.0f;
     private float _currentTime = 0.0f;
     [SerializeField]
@@ -59,14 +59,14 @@ public class NobleBehavior : MonoBehaviour
             _seatIndex = _positions.GetSeat();
             _agent.destination = _positions._tablePositions[_seatIndex].position.position;
         }
-        if(_currentState == _states.Seated)
+        else
         {
             _currentState = _states.Waiting;
             var temp = _positions._tablePositions[_seatIndex];
             temp.taken = false;
-            _positions._tablePositions[_waitIndex] = temp;
+            _positions._tablePositions[_seatIndex] = temp;
             _waitIndex = _positions.GetWaitPos();
-            _agent.destination = _agent.destination = _positions._waitPositions[_waitIndex].position.position;
+            _agent.destination = _positions._waitPositions[_waitIndex].position.position;
         }
     }
 }
