@@ -23,7 +23,7 @@ public class PickupableObject : MonoBehaviour
             transform.parent = hand;
             GetComponent<Collider>().enabled = false;
             isPicked = true;
-            inst.GetComponent<PickupableObject>().isGenerator = true;
+            isGenerator = false;
     }
 
     public virtual void OnPickup()
@@ -47,10 +47,7 @@ public class PickupableObject : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = false;
             transform.parent = null;
             GetComponent<Collider>().enabled = true;
-            isPicked = false;
-            Debug.Log("meat debug");
-        
-        
+            isPicked = false;        
     }
 
     // Update is called once per frame

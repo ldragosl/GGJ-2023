@@ -68,7 +68,6 @@ public class GrabObjects : MonoBehaviour
                     }
                     else
                     {
-                       Debug.Log(currentItem);
                        DropItem(currentItem);
                     }
                 }
@@ -86,7 +85,6 @@ public class GrabObjects : MonoBehaviour
 
     public void DropItem(GameObject currentItem)
     {
-        Debug.Log(currentItem);
         currentItem.GetComponent<PickupableObject>().Drop();
         isPicked = false;
         //currentItem = null;
