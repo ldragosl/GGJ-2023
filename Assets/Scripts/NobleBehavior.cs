@@ -45,16 +45,19 @@ public class NobleBehavior : MonoBehaviour
 
     private void AdvanceState()
     {
+        _currentTime = 0.0f;
         _waitTime = Random.Range(_waitMin, _waitMax + 1);
         if (_currentState == _states.Waiting)
         {
             _currentState = _states.Seated;
-            _positions.FreeSeat("seat", _agent.destination);
-            _agent.destination = _agent.destination = _positions.GetWaitPos().position;
+            _positions.FreeSeat("wait", _agent.destination);
+            _agent.destination = _agent.destination = _positions.GetSeat().position;
         }
         else
         {
             _currentState = _states.Waiting;
+            _positions.FreeSeat("seat", _agent.destination);
+            _agent.destination = _agent.destination = _positions.GetWaitPos().position;
             _agent.destination = new Vector3(0, 0, 0);
         }
     }
