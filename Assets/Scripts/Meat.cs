@@ -26,9 +26,10 @@ public class Meat : PickupableObject
 
         if (gameObject.GetComponent<CookableMeat>().isFullyCooked())
         {
-            if (transform.position.z > 0f)
+            if (transform.position.z > 1f)
             {
-                Debug.Log("drop meat");
+                if(OrderManager.instance.fulfillNamedOrder("meat"))
+                    Destroy(gameObject);
             }
         }
     }
