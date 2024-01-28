@@ -19,6 +19,7 @@ public class Pan : PickupableObject
 
         GameObject[] rats = GameObject.FindGameObjectsWithTag("Rat");
         GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+        transform.eulerAngles = new Vector3(-90f, 0f, 180f);
         foreach (GameObject rat in rats)
         {
             Rats ratComp = rat.GetComponent<Rats>();
