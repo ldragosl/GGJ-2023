@@ -37,31 +37,31 @@ public class GrabObjects : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(mouseRay, out hit))
         {
-                //pickUpText.gameObject.SetActive(true);
-                if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.GetComponent<PickupableObject>() && Vector3.Distance(hit.collider.gameObject.transform.position, gameObject.transform.position) <= range)
-                {
+            //pickUpText.gameObject.SetActive(true);
+            if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.GetComponent<PickupableObject>() && Vector3.Distance(hit.collider.gameObject.transform.position, gameObject.transform.position) <= range)
+            {
                   
-                if(currentItem)
+            if(currentItem)
+            {
+                if (currentItem.tag == "Pan" && hasMeat == false)
                 {
-                    if (currentItem.tag == "Pan" && hasMeat == false)
-                    {
-                        currentMeat = hit.collider.gameObject;
-                       // hit.collider.gameObject.transform.parent = currentItem.transform;
-                        GrabObject(currentMeat);
-                        currentMeat.transform.parent = currentItem.transform;
-                        currentMeat.GetComponent<BoxCollider>().enabled = false;
-                        hasMeat = true;
-                    }
+                    currentMeat = hit.collider.gameObject;
+                    // hit.collider.gameObject.transform.parent = currentItem.transform;
+                    GrabObject(currentMeat);
+                    currentMeat.transform.parent = currentItem.transform;
+                    currentMeat.GetComponent<BoxCollider>().enabled = false;
+                    hasMeat = true;
                 }
+            }
 
-                if (isPicked == false)
-                {
-                    currentItem = hit.collider.gameObject;
-                    GrabObject(currentItem);
-                    isPicked = true;
-                }
+            if (isPicked == false)
+            {
+                currentItem = hit.collider.gameObject;
+                GrabObject(currentItem);
+                isPicked = true;
+            }
 
-                }
+            }
 
         }
 
@@ -71,6 +71,7 @@ public class GrabObjects : MonoBehaviour
             {
                 if (currentItem.tag == "Pan")
                 {
+                    currentItem.GetComponent<PickupableObject>().Drop();
                     currentItem.transform.position = stoveSpot.position;
                     currentItem.transform.parent = null;
                     isPicked = false;
