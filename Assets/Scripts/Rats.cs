@@ -67,11 +67,19 @@ public class Rats : MonoBehaviour
         {
             if (wantsToStealPan)
             {
-                wantsToStealPan = false;
-                stolePan = true;
-                stolePanTime = Time.time;
-                panComp.transform.position = transform.position + new Vector3(0f, 0.3f, 0f);
-                panComp.gameObject.transform.parent = transform;
+                if (!panComp.isPicked)
+                {
+                    wantsToStealPan = false;
+                    stolePan = true;
+                    stolePanTime = Time.time;
+                    panComp.transform.position = transform.position + new Vector3(0f, 0.3f, 0f);
+                    panComp.gameObject.transform.parent = transform;
+                }
+                else
+                {
+                    wantsToStealPan = false;
+                    setRandomTarget();
+                }
             }
             else setRandomTarget();
         }
