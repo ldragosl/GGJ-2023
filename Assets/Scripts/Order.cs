@@ -7,7 +7,7 @@ public class Order : MonoBehaviour
     private static int idCounter = 0;
     public int orderId;
     public string orderName;
-    public float timeLeft = 10f;
+    public float timeLeft = 20f;
     public NobleBehavior orderPlacer;
     public Order()
     {
