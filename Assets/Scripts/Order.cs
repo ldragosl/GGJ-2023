@@ -8,7 +8,7 @@ public class Order : MonoBehaviour
     public int orderId;
     public string orderName;
     public float timeLeft = 10f;
-    Order()
+    public Order()
     {
         orderId = idCounter;
         idCounter++;

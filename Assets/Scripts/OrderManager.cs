@@ -9,6 +9,7 @@ public class OrderManager : MonoBehaviour
     public List<Order> orders;
 
     private float lastOrderTime = 0f;
+    private float lastUpdate = 0f;
     public void addOrder(Order order)
     {
         orders.Add(order);
@@ -39,6 +40,21 @@ public class OrderManager : MonoBehaviour
         orders = new List<Order> ();
     }
 
+    void CheckForNewOrders()
+    {
+        if(orders.Count <= 5 && Time.time - lastOrderTime > 7f)
+        {
+            lastOrderTime = Time.time;
+            placeNewOrder();
+        }
+    }
+
+    void placeNewOrder()
+    {
+        var comp = gameObject.AddComponent<CookedMeatOrder>();
+        addOrder(comp);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +70,16 @@ public class OrderManager : MonoBehaviour
         }
         orders = orders.Where(val => !ordersToRemove.Contains(val.orderId)).ToList();
 
+        CheckForNewOrders();
 
+        if (Time.time - lastUpdate > 0.5f)
+        {
+            lastUpdate = Time.time;
+            Debug.Log("*****************New menu update: " + lastUpdate);
+            foreach (Order order in orders)
+            {
+                Debug.Log("Order id " + order.orderId + ", order message: " + order.orderName + ", timeLeft: " + order.timeLeft);
+            }
+        }
     }
 }
