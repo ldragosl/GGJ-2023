@@ -41,7 +41,7 @@ public class OrderManager : MonoBehaviour
         orders = new List<Order> ();
     }
 
-    void placeNewOrder(NobleBehavior placer)
+    public void placeNewOrder(NobleBehavior placer)
     {
         var comp = gameObject.AddComponent<CookedMeatOrder>();
         comp.orderPlacer = placer;

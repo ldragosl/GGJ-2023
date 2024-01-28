@@ -17,10 +17,11 @@ public class Order : MonoBehaviour
 
     public virtual void fulfill()
     {
+        orderPlacer.AdvanceState();
     }
 
     public virtual void discard()
     {
-
+        orderPlacer.AdvanceState();
     }
 }
