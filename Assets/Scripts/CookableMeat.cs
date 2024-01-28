@@ -9,6 +9,8 @@ public class CookableMeat : MonoBehaviour
     public Color cookColor;
     public GameObject meatExteriour;
     public float cookTime = 5f;
+    [SerializeField]
+    private GameObject particles;
 
     float cookValue = 0f;
     Material meatMat;
@@ -19,6 +21,8 @@ public class CookableMeat : MonoBehaviour
         meatMat = new Material(meatExteriour.GetComponent<MeshRenderer>().material);
         meatMat.color = rawColor;
         meatExteriour.GetComponent<MeshRenderer>().material = meatMat;
+       // particles.SetActive(false);
+        
     }
 
     public bool isFullyCooked() {
@@ -35,6 +39,8 @@ public class CookableMeat : MonoBehaviour
                 if (transform.parent != null && transform.parent.tag == "Pan")
                 {
                     cookValue += Time.deltaTime / cookTime;
+                    if(cookValue >=1f)
+                        particles.SetActive(true);
                     meatMat.color = Color.Lerp(rawColor, cookColor, cookValue);
                 }
             }
