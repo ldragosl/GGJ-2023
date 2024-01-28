@@ -11,7 +11,7 @@ public class KingBehaviour : MonoBehaviour
     public GameObject KingSpriteVeryHappy;
      public float laughter = 10;
     private bool stolePan = false;
-    private float _laughTime = 10.0f;
+    private float _laughTime = 20.0f;
     private float _currentTime = 0.0f;
 
 

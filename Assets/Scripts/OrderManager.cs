@@ -16,7 +16,7 @@ public class OrderManager : MonoBehaviour
         orders.Add(order);
         if(orders.Count > 3)
         {
-            GameObject.Find("King").GetComponent<KingBehaviour>().AddLaughter(5);
+            GameObject.FindGameObjectWithTag("KingUI").GetComponent<KingBehaviour>().AddLaughter(5);
         }
     }
 

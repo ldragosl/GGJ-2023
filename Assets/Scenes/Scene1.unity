@@ -8035,7 +8035,7 @@ GameObject:
   - component: {fileID: 2127736356}
   m_Layer: 0
   m_Name: King
-  m_TagString: Untagged
+  m_TagString: KingUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
