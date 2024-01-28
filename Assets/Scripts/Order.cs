@@ -8,7 +8,7 @@ public class Order : MonoBehaviour
     public bool fulfilled = false;
     public int orderId;
     public string orderName;
-    public float timeLeft = 10f;
+    public float timeLeft = 20f;
     public NobleBehavior orderPlacer;
     public Order()
     {

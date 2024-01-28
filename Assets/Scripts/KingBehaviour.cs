@@ -19,6 +19,8 @@ public class KingBehaviour : MonoBehaviour
         KingSpriteHappy.SetActive(false);
         KingSpriteVeryHappy.SetActive(false);
         laughMetter.value = laughter;
+        StartCoroutine(RemoveLaughter());
+
 
     }
 
@@ -49,6 +51,17 @@ public class KingBehaviour : MonoBehaviour
         }
         laughMetter.value = laughter;
 
+    }
+    public void AddLaughter(int modify)
+    {
+        laughter = laughter + modify;
+    }
+    IEnumerator RemoveLaughter()
+    {
+        
+        yield return new WaitForSeconds(10);
+        Debug.Log("The king is bored");
+        laughter = laughter - 10;
     }
 
 }
