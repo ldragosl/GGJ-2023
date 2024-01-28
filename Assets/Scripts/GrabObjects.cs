@@ -43,36 +43,34 @@ public class GrabObjects : MonoBehaviour
                         GrabObject(hit.collider.gameObject);
                     }
                 }
-                    
-                    if(isPicked==false)
-                    {
-                          currentItem = hit.collider.gameObject;
-                          GrabObject(currentItem);
-                    }
-                    
-                    
+
+                if (isPicked == false)
+                {
+                    currentItem = hit.collider.gameObject;
+                    GrabObject(currentItem);
                 }
 
-                if (Input.GetMouseButtonDown(1) && isPicked == true)
-                {
-               
-                    if(currentItem.tag=="Pan")
-                    {
-                        if (hit.collider.tag == "Stove")
-                        {
-                            currentItem.transform.position = stoveSpot.position;
-                            currentItem.transform.parent = null;
-                            isPicked = false;
-                            currentItem.GetComponent<Collider>().enabled = true;
-                        }
-                    }
-                    else
-                    {
-                       DropItem(currentItem);
-                    }
                 }
+
+        }
+
+        if (Input.GetMouseButtonDown(1) && isPicked == true)
+        {
+
+            /*if (currentItem.tag == "Pan")
+            {
+                if (hit.collider.tag == "Stove")
+                {
+                    currentItem.transform.position = stoveSpot.position;
+                    currentItem.transform.parent = null;
+                    isPicked = false;
+                    currentItem.GetComponent<Collider>().enabled = true;
+                }
+            }*/
             
-        
+            {
+                DropItem(currentItem);
+            }
         }
     }
     
