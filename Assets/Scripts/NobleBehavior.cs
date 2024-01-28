@@ -40,6 +40,10 @@ public class NobleBehavior : MonoBehaviour
     {
         if (_currentState == _states.Seated)
         {
+            if(Vector3.Distance(transform.position, _agent.destination) < 0.1)
+            {
+                transform.rotation = _positions._tablePositions[_seatIndex].position.rotation;
+            }
             _currentTime += Time.deltaTime;
             if (_currentTime >= _waitTime)
             {
