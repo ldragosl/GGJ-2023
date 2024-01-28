@@ -21,6 +21,7 @@ public class Meat : PickupableObject
 
     public override void Drop()
     {
+
         base.Drop();
     }
 

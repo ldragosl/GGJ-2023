@@ -26,6 +26,7 @@ public class GrabObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(mouseRay, out hit))
@@ -54,6 +55,7 @@ public class GrabObjects : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(1) && isPicked == true)
                 {
+               
                     if(currentItem.tag=="Pan")
                     {
                         if (hit.collider.tag == "Stove")
@@ -66,9 +68,9 @@ public class GrabObjects : MonoBehaviour
                     }
                     else
                     {
-                        DropItem(currentItem);
+                       Debug.Log(currentItem);
+                       DropItem(currentItem);
                     }
-                    DropItem(currentItem);
                 }
             
         
@@ -84,8 +86,9 @@ public class GrabObjects : MonoBehaviour
 
     public void DropItem(GameObject currentItem)
     {
+        Debug.Log(currentItem);
         currentItem.GetComponent<PickupableObject>().Drop();
         isPicked = false;
-        currentItem = null;
+        //currentItem = null;
     }
 }

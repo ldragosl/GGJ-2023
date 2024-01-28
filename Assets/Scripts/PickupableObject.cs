@@ -16,23 +16,18 @@ public class PickupableObject : MonoBehaviour
 
     void GenerateNew()
     {
-        
-        if (isGenerator)
-        {
             GameObject inst = Instantiate(gameObject, transform.position, transform.rotation);
-            inst.GetComponent<Rigidbody>().isKinematic = true;
-            inst.transform.position = hand.position;
-            inst.transform.rotation = Quaternion.Euler(-90, 0, 180);
-            inst.transform.parent = hand;
-            inst.GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+            transform.position = hand.position;
+            transform.rotation = Quaternion.Euler(-90, 0, 180);
+            transform.parent = hand;
+            GetComponent<Collider>().enabled = false;
             isPicked = true;
-            isGenerator = false;
-        }
+            inst.GetComponent<PickupableObject>().isGenerator = true;
     }
 
     public virtual void OnPickup()
-    {
-        
+    { 
         if(isGenerator)
             GenerateNew();
         else 
@@ -44,19 +39,18 @@ public class PickupableObject : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             isPicked = true;
         }
-            
-        
-        
-        
-
     }
 
     public virtual void Drop()
     {
-        GetComponent<Rigidbody>().isKinematic = false;
-        transform.parent = null;
-        GetComponent<Collider>().enabled = true;
-        isPicked = false;
+        
+            GetComponent<Rigidbody>().isKinematic = false;
+            transform.parent = null;
+            GetComponent<Collider>().enabled = true;
+            isPicked = false;
+            Debug.Log("meat debug");
+        
+        
     }
 
     // Update is called once per frame
