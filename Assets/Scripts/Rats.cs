@@ -16,6 +16,7 @@ public class Rats : MonoBehaviour
     private float ratSpeed = 5f;
     private bool wantsToStealPan = false;
     private bool stolePan = false;
+    private float stolePanTime = 0f;
     private Vector3 target;
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,14 @@ public class Rats : MonoBehaviour
             }
         }
 
+        if (stolePan && Time.time - stolePanTime > 2f )
+        {
+            target.y = targetY;
+            panComp.transform.position = transform.position + new Vector3(0f, 0.4f, 0f);
+            panComp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            panComp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        }
+
         transform.LookAt(target);
         transform.position += transform.forward * ratSpeed * Time.deltaTime;
         if(Vector3.Distance(transform.position, target) < 0.1f)
@@ -58,6 +67,7 @@ public class Rats : MonoBehaviour
                 wantsToStealPan = false;
                 stolePan = true;
                 panComp.transform.position = transform.position + new Vector3(0f, 0.2f, 0f);
+                stolePanTime = Time.time;
                 panComp.gameObject.transform.parent = transform;
             }
             else setRandomTarget();
