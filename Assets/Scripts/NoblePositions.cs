@@ -15,7 +15,7 @@ public class NoblePositions: MonoBehaviour
     public List<SeatPosition> _waitPositions;
     // Start is called before the first frame update
 
-    public Transform GetSeat()
+    public int GetSeat()
     {
         for (int i= 0; i < _tablePositions.Count; i++)
         {
@@ -24,13 +24,13 @@ public class NoblePositions: MonoBehaviour
                 var temp = _tablePositions[i];
                 temp.taken = true;
                 _tablePositions[i] = temp;
-                return _tablePositions[i].position;
+                return i;
             }
         }
-        return null;
+        return -1;
     }
 
-    public Transform GetWaitPos()
+    public int GetWaitPos()
     {
         for (int i = 0; i < _waitPositions.Count; i++)
         {
@@ -39,10 +39,10 @@ public class NoblePositions: MonoBehaviour
                 var temp = _waitPositions[i];
                 temp.taken = true;
                 _waitPositions[i] = temp;
-                return _waitPositions[i].position;
+                return i;
             }
         }
-        return null;
+        return -1;
     }
 
     public void FreeSeat(string type, Vector3 position)
