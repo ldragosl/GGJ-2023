@@ -13,6 +13,7 @@ public class GrabObjects : MonoBehaviour
     public int range = 4;
     public TMP_Text pickUpText;
     public GameObject currentItem;
+    public bool hasMeat = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +38,13 @@ public class GrabObjects : MonoBehaviour
                   
                 if(currentItem)
                 {
-                    if (currentItem.tag == "Pan")
+                    if (currentItem.tag == "Pan" && hasMeat == false)
                     {
                        // hit.collider.gameObject.transform.parent = currentItem.transform;
                         GrabObject(hit.collider.gameObject);
+                        hit.collider.gameObject.transform.parent = currentItem.transform;
+                        hit.collider.gameObject.GetComponent<BoxCollider>().enabled = false;
+                        hasMeat = true;
                     }
                 }
 
@@ -48,6 +52,7 @@ public class GrabObjects : MonoBehaviour
                 {
                     currentItem = hit.collider.gameObject;
                     GrabObject(currentItem);
+                    isPicked = true;
                 }
 
                 }
@@ -56,20 +61,20 @@ public class GrabObjects : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && isPicked == true)
         {
-
-            /*if (currentItem.tag == "Pan")
+            if (hit.collider.tag == "Stove")
             {
-                if (hit.collider.tag == "Stove")
+                if (currentItem.tag == "Pan")
                 {
                     currentItem.transform.position = stoveSpot.position;
                     currentItem.transform.parent = null;
                     isPicked = false;
                     currentItem.GetComponent<Collider>().enabled = true;
                 }
-            }*/
+            }
             
             {
                 DropItem(currentItem);
+                isPicked = false;
             }
         }
     }
@@ -78,13 +83,13 @@ public class GrabObjects : MonoBehaviour
     public void GrabObject(GameObject pickedItem)
     {
         pickedItem.GetComponent<PickupableObject>().OnPickup();
-        isPicked = true;
+        
     }
 
     public void DropItem(GameObject currentItem)
     {
         currentItem.GetComponent<PickupableObject>().Drop();
-        isPicked = false;
-        //currentItem = null;
+        
+        currentItem = null;
     }
 }
