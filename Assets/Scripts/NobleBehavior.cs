@@ -16,6 +16,8 @@ public class NobleBehavior : MonoBehaviour
 
     [SerializeField]
     private Image _orderImage;
+    [SerializeField]
+    private Image _nobleImage;
 
     private int _seatIndex;
     private int _waitIndex;
@@ -55,6 +57,20 @@ public class NobleBehavior : MonoBehaviour
                 AdvanceState();
             }
         }
+        else
+        {
+            if (Vector3.Distance(transform.position, _agent.destination) < 0.1)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
+        }
+    }
+
+    public IEnumerator Angery()
+    {
+        _nobleImage.color = Color.red;
+        yield return new WaitForSeconds(3);
+        _nobleImage.color = Color.white;
     }
 
     public void AdvanceState()

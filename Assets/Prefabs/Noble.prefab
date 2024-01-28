@@ -341,3 +341,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _positions: {fileID: 0}
   _orderImage: {fileID: 80649266114792180}
+  _nobleImage: {fileID: 6016307876347990175}
