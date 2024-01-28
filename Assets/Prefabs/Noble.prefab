@@ -249,7 +249,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 0.5, y: 2, z: 0.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &5245926907584067069
 MonoBehaviour:
@@ -263,28 +263,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da88df2a2f3bd742bad69a10b3c3419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tablePositions:
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
-  - position: {fileID: 0}
-    taken: 0
+  _positions: {fileID: 0}
