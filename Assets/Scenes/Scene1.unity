@@ -1823,6 +1823,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5245926907584067069, guid: 59d9999dfd6fdf04782dccae9e9fb1bc, type: 3}
+      propertyPath: _positions
+      value: 
+      objectReference: {fileID: 1468909005}
+    - target: {fileID: 5245926907584067069, guid: 59d9999dfd6fdf04782dccae9e9fb1bc, type: 3}
       propertyPath: _tablePositions.Array.data[0].position
       value: 
       objectReference: {fileID: 503114585}
