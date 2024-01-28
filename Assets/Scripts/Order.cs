@@ -5,6 +5,7 @@ using UnityEngine;
 public class Order : MonoBehaviour
 {
     private static int idCounter = 0;
+    public bool fulfilled = false;
     public int orderId;
     public string orderName;
     public float timeLeft = 20f;
@@ -17,11 +18,13 @@ public class Order : MonoBehaviour
 
     public virtual void fulfill()
     {
+        fulfilled = true;
         orderPlacer.AdvanceState();
     }
 
     public virtual void discard()
     {
+        fulfilled = true;
         orderPlacer.AdvanceState();
     }
 }

@@ -16,22 +16,17 @@ public class OrderManager : MonoBehaviour
         orders.Add(order);
     }
 
-    public void fulfillNamedOrder(string orderName)
+    public bool fulfillNamedOrder(string orderName)
     {
         foreach (Order order in orders) {
-            if(order.orderName == orderName)
+            if(!order.fulfilled && order.orderName == orderName)
             {
                 //fulfill the first order and remove it from the list
                 order.fulfill();
-                removeOrder(order.orderId);
-                break;
+                return true;
             }
         }
-    }
-
-    private void removeOrder(int orderId)
-    {
-        orders = orders.Where(val => val.orderId != orderId).ToList();
+        return false;
     }
 
     // Start is called before the first frame update
@@ -51,17 +46,14 @@ public class OrderManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        List<int> ordersToRemove = new List<int>();
         foreach(Order order in orders)
         {
             order.timeLeft -= Time.deltaTime;
-            if(order.timeLeft < 0)
+            if(order.timeLeft < 0 && !order.fulfilled)
             {
                 order.discard();
-                ordersToRemove.Add(order.orderId);
             }
         }
-        orders = orders.Where(val => !ordersToRemove.Contains(val.orderId)).ToList();
 
         if (showDebug && Time.time - lastUpdate > 0.5f)
         {
@@ -69,7 +61,10 @@ public class OrderManager : MonoBehaviour
             Debug.Log("*****************New menu update: " + lastUpdate);
             foreach (Order order in orders)
             {
-                Debug.Log("Order id " + order.orderId + ", order message: " + order.orderName + ", timeLeft: " + order.timeLeft);
+                if (!order.fulfilled)
+                {
+                    Debug.Log("Order id " + order.orderId + ", order message: " + order.orderName + ", timeLeft: " + order.timeLeft);
+                }
             }
         }
     }
