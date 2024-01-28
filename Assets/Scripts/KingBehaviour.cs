@@ -9,7 +9,7 @@ public class KingBehaviour : MonoBehaviour
     public GameObject KingSpriteNeutral;
     public GameObject KingSpriteHappy;
     public GameObject KingSpriteVeryHappy;
-     float laughter = 10;
+     public float laughter = 10;
     private bool stolePan = false;
 
 
@@ -47,11 +47,8 @@ public class KingBehaviour : MonoBehaviour
             KingSpriteVeryHappy.SetActive(false);
             KingSpriteHappy.SetActive(true);
         }
-        if (laughter < 10)
-        {
-            laughter++;
-        }
-        else laughter--;
+        laughMetter.value = laughter;
+
     }
 
 }
