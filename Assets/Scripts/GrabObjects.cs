@@ -7,7 +7,7 @@ public class GrabObjects : MonoBehaviour
 {
     public static GrabObjects singleton;
 
-    public Transform hand;
+    [SerializeField] Transform hand;
     public Transform stoveSpot;
     public bool isPicked;
     public int range = 4;
@@ -17,6 +17,7 @@ public class GrabObjects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hand = GameObject.FindGameObjectWithTag("Hand").transform;
         singleton = this;
         isPicked = false;
     }
@@ -52,7 +53,7 @@ public class GrabObjects : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 if (Physics.Raycast(mouseRay, out hit))
-                    if (hit.collider.tag == "Stove")
+                    if (hit.collider.tag == "Stove" && currentItem.tag == "Pan")
                     {
                         currentItem.transform.position = stoveSpot.position;
                         currentItem.transform.parent = null;
