@@ -53,9 +53,8 @@ public class Rats : MonoBehaviour
         if (stolePan && Time.time - stolePanTime > 2f )
         {
             target.y = targetY;
-            panComp.transform.position = transform.position + new Vector3(0f, 0.4f, 0f);
-            panComp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-            panComp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+            panComp.transform.position = transform.position + new Vector3(0f, 0.3f, 0f);
+            panComp.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
 
         transform.LookAt(target);
@@ -66,8 +65,8 @@ public class Rats : MonoBehaviour
             {
                 wantsToStealPan = false;
                 stolePan = true;
-                panComp.transform.position = transform.position + new Vector3(0f, 0.2f, 0f);
                 stolePanTime = Time.time;
+                panComp.transform.position = transform.position + new Vector3(0f, 0.3f, 0f);
                 panComp.gameObject.transform.parent = transform;
             }
             else setRandomTarget();

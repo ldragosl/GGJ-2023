@@ -10,6 +10,7 @@ public class OrderManager : MonoBehaviour
 
     private float lastOrderTime = 0f;
     private float lastUpdate = 0f;
+    public bool showDebug = false;
     public void addOrder(Order order)
     {
         orders.Add(order);
@@ -72,7 +73,7 @@ public class OrderManager : MonoBehaviour
 
         CheckForNewOrders();
 
-        if (Time.time - lastUpdate > 0.5f)
+        if (showDebug && Time.time - lastUpdate > 0.5f)
         {
             lastUpdate = Time.time;
             Debug.Log("*****************New menu update: " + lastUpdate);
