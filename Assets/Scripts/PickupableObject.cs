@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PickupableObject : MonoBehaviour
 {
-    public Transform hand;
+    [SerializeField] Transform hand;
     GrabObjects grabObject;
     public bool isPicked = false;
     public bool isGenerator = false;
-    void Start()
+    public void Start()
     {
+        if(GameObject.FindGameObjectWithTag("Hand"))
+        {
+            Debug.Log("Find Hand");
+        }
+        hand = GameObject.FindGameObjectWithTag("Hand").transform;
         grabObject = GrabObjects.singleton;
     }
 
@@ -32,6 +37,7 @@ public class PickupableObject : MonoBehaviour
         transform.parent = hand;
         GetComponent<Collider>().enabled = false;
         isPicked = true;
+        Debug.Log("PickUp");
     }
 
     public virtual void Drop()

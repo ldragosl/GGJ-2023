@@ -9,6 +9,7 @@ TagManager:
   - Stove
   - Pan
   - Meat
+  - Hand
   layers:
   - Default
   - TransparentFX
