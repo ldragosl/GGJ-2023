@@ -39,8 +39,12 @@ public class CookableMeat : MonoBehaviour
                 if (transform.parent != null && transform.parent.tag == "Pan")
                 {
                     cookValue += Time.deltaTime / cookTime;
-                    if(cookValue >=1f)
+                    if(cookValue >= 1f && cookValue < 1.2f)
                         particles.SetActive(true);
+                    else
+                    {
+                        particles.SetActive(false);
+                    }
                     meatMat.color = Color.Lerp(rawColor, cookColor, cookValue);
                 }
             }
