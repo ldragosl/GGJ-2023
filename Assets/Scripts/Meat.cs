@@ -23,6 +23,14 @@ public class Meat : PickupableObject
     {
 
         base.Drop();
+
+        if (gameObject.GetComponent<CookableMeat>().isFullyCooked())
+        {
+            if (transform.position.z > 0f)
+            {
+                Debug.Log("drop meat");
+            }
+        }
     }
 
     // Update is called once per frame

@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class NobleBehavior : MonoBehaviour
 {
-    private const float _waitMax = 10.0f;
-    private const float _waitMin = 5.0f;
+    private const float _waitMax = 25.0f;
+    private const float _waitMin = 10.0f;
     private float _waitTime = 0.0f;
     private float _currentTime = 0.0f;
     [SerializeField]
@@ -38,15 +38,17 @@ public class NobleBehavior : MonoBehaviour
 
     private void Update()
     {
-        _currentTime += Time.deltaTime;
-        if(_currentTime >= _waitTime)
+        if (_currentState == _states.Seated)
         {
-            AdvanceState();
+            _currentTime += Time.deltaTime;
+            if (_currentTime >= _waitTime)
+            {
+                AdvanceState();
+            }
         }
-        
     }
 
-    private void AdvanceState()
+    public void AdvanceState()
     {
         _currentTime = 0.0f;
         _waitTime = Random.Range(_waitMin, _waitMax + 1);
@@ -59,14 +61,16 @@ public class NobleBehavior : MonoBehaviour
             _seatIndex = _positions.GetSeat();
             _agent.destination = _positions._tablePositions[_seatIndex].position.position;
         }
-        if(_currentState == _states.Seated)
+        else
         {
             _currentState = _states.Waiting;
+            OrderManager.instance.placeNewOrder(this);
             var temp = _positions._tablePositions[_seatIndex];
             temp.taken = false;
-            _positions._tablePositions[_waitIndex] = temp;
+            _positions._tablePositions[_seatIndex] = temp;
             _waitIndex = _positions.GetWaitPos();
-            _agent.destination = _agent.destination = _positions._waitPositions[_waitIndex].position.position;
+            _agent.destination = _positions._waitPositions[_waitIndex].position.position;
         }
     }
+
 }

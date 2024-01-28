@@ -41,18 +41,10 @@ public class OrderManager : MonoBehaviour
         orders = new List<Order> ();
     }
 
-    void CheckForNewOrders()
-    {
-        if(orders.Count <= 5 && Time.time - lastOrderTime > 7f)
-        {
-            lastOrderTime = Time.time;
-            placeNewOrder();
-        }
-    }
-
-    void placeNewOrder()
+    public void placeNewOrder(NobleBehavior placer)
     {
         var comp = gameObject.AddComponent<CookedMeatOrder>();
+        comp.orderPlacer = placer;
         addOrder(comp);
     }
 
@@ -70,8 +62,6 @@ public class OrderManager : MonoBehaviour
             }
         }
         orders = orders.Where(val => !ordersToRemove.Contains(val.orderId)).ToList();
-
-        CheckForNewOrders();
 
         if (showDebug && Time.time - lastUpdate > 0.5f)
         {
