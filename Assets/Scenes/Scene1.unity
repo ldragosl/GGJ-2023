@@ -1864,6 +1864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 366173206}
   - component: {fileID: 366173207}
+  - component: {fileID: 366173208}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -1948,6 +1949,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &366173208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366173205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd27ef7c34d9d5043b163ae33a1a426a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSrc: {fileID: 366173207}
+  minRange: 4
+  maxRange: 8
+  minTime: 3
+  maxTime: 12
+  t: 0
 --- !u!1 &370840797
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,6 +2478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 481622463}
   - component: {fileID: 481622464}
+  - component: {fileID: 481622465}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -2543,6 +2563,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &481622465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481622462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd27ef7c34d9d5043b163ae33a1a426a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSrc: {fileID: 481622464}
+  minRange: 4
+  maxRange: 8
+  minTime: 3
+  maxTime: 12
+  t: 0
 --- !u!1001 &503114582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3426,6 +3464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 723433181}
   - component: {fileID: 723433182}
+  - component: {fileID: 723433183}
   m_Layer: 0
   m_Name: Point Light (1)
   m_TagString: Untagged
@@ -3510,6 +3549,24 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &723433183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723433180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd27ef7c34d9d5043b163ae33a1a426a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSrc: {fileID: 723433182}
+  minRange: 4
+  maxRange: 8
+  minTime: 3
+  maxTime: 12
+  t: 0
 --- !u!1001 &725995635
 PrefabInstance:
   m_ObjectHideFlags: 0
