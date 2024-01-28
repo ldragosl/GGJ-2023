@@ -38,7 +38,7 @@ public class GrabObjects : MonoBehaviour
                 {
                     if (currentItem.tag == "Pan")
                     {
-                        hit.collider.gameObject.transform.parent = currentItem.transform;
+                       // hit.collider.gameObject.transform.parent = currentItem.transform;
                         GrabObject(hit.collider.gameObject);
                     }
                 }

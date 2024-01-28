@@ -20,6 +20,12 @@ public class PickupableObject : MonoBehaviour
         if (isGenerator)
         {
             GameObject inst = Instantiate(gameObject, transform.position, transform.rotation);
+            inst.GetComponent<Rigidbody>().isKinematic = true;
+            inst.transform.position = hand.position;
+            inst.transform.rotation = Quaternion.Euler(-90, 0, 180);
+            inst.transform.parent = hand;
+            inst.GetComponent<Collider>().enabled = false;
+            isPicked = true;
             isGenerator = false;
         }
     }
@@ -27,9 +33,10 @@ public class PickupableObject : MonoBehaviour
     public virtual void OnPickup()
     {
         
-        if(!isGenerator)
-        {
+        if(isGenerator)
             GenerateNew();
+        else 
+        {
             GetComponent<Rigidbody>().isKinematic = true;
             transform.position = hand.position;
             transform.rotation = Quaternion.Euler(-90, 0, 180);
@@ -37,6 +44,8 @@ public class PickupableObject : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             isPicked = true;
         }
+            
+        
         
         
 
