@@ -43,6 +43,7 @@ public class Controller : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+       
     }
 
     public void MovePlayer()

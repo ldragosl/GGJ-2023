@@ -20,51 +20,58 @@ public class GrabObjects : MonoBehaviour
         hand = GameObject.FindGameObjectWithTag("Hand").transform;
         singleton = this;
         isPicked = false;
+        currentItem = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-       
-        if (isPicked == false)
+        Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(mouseRay, out hit))
         {
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(mouseRay, out hit))
-            {
-                if (hit.collider.gameObject.GetComponent<PickupableObject>() && Vector3.Distance(hit.collider.gameObject.transform.position, gameObject.transform.position) <= range)
+                //pickUpText.gameObject.SetActive(true);
+                if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.GetComponent<PickupableObject>() && Vector3.Distance(hit.collider.gameObject.transform.position, gameObject.transform.position) <= range)
                 {
-                    pickUpText.gameObject.SetActive(true);
-                    if (Input.GetMouseButtonDown(0))
+                  
+                if(currentItem)
+                {
+                    if (currentItem.tag == "Pan")
                     {
-                        currentItem = hit.collider.gameObject;
-                        GrabObject(currentItem);
+                        hit.collider.gameObject.transform.parent = currentItem.transform;
+                        GrabObject(hit.collider.gameObject);
+                    }
+                }
+                    
+                    if(isPicked==false)
+                    {
+                          currentItem = hit.collider.gameObject;
+                          GrabObject(currentItem);
                     }
                     
+                    
                 }
-            }
-        }
 
-        if (isPicked == true)
-        {
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                if (Physics.Raycast(mouseRay, out hit))
-                    if (hit.collider.tag == "Stove" && currentItem.tag == "Pan")
+                if (Input.GetMouseButtonDown(1) && isPicked == true)
+                {
+                    if(currentItem.tag=="Pan")
                     {
-                        currentItem.transform.position = stoveSpot.position;
-                        currentItem.transform.parent = null;
-                        isPicked = false;
-                        currentItem.GetComponent<Collider>().enabled = true;
+                        if (hit.collider.tag == "Stove")
+                        {
+                            currentItem.transform.position = stoveSpot.position;
+                            currentItem.transform.parent = null;
+                            isPicked = false;
+                            currentItem.GetComponent<Collider>().enabled = true;
+                        }
                     }
                     else
                     {
                         DropItem(currentItem);
                     }
-            }
+                    DropItem(currentItem);
+                }
+            
+        
         }
     }
     
@@ -79,5 +86,6 @@ public class GrabObjects : MonoBehaviour
     {
         currentItem.GetComponent<PickupableObject>().Drop();
         isPicked = false;
+        currentItem = null;
     }
 }
