@@ -69,6 +69,7 @@ public class GrabObjects : MonoBehaviour
                     currentItem.transform.parent = null;
                     isPicked = false;
                     currentItem.GetComponent<Collider>().enabled = true;
+                    currentItem = null;
                 }
             }
             
