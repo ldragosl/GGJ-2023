@@ -10,6 +10,7 @@ TagManager:
   - Pan
   - Meat
   - Hand
+  - ScoreUI
   layers:
   - Default
   - TransparentFX
