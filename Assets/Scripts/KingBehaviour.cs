@@ -11,7 +11,8 @@ public class KingBehaviour : MonoBehaviour
     public GameObject KingSpriteVeryHappy;
      public float laughter = 10;
     private bool stolePan = false;
-
+    private float _laughTime = 10.0f;
+    private float _currentTime = 0.0f;
 
 
     void Start()
@@ -19,13 +20,19 @@ public class KingBehaviour : MonoBehaviour
         KingSpriteHappy.SetActive(false);
         KingSpriteVeryHappy.SetActive(false);
         laughMetter.value = laughter;
-        StartCoroutine(RemoveLaughter());
+      //  StartCoroutine(RemoveLaughter());
 
 
     }
 
     void Update()
     {
+        _currentTime += Time.deltaTime;
+        if(_currentTime >= _laughTime)
+        {
+            AddLaughter(-10);
+            _currentTime = 0;
+        }
         if(laughter >= 30)
         {
             KingSpriteHappy.SetActive(true);
@@ -55,13 +62,17 @@ public class KingBehaviour : MonoBehaviour
     public void AddLaughter(int modify)
     {
         laughter = laughter + modify;
+        if (laughter < 0)
+            laughter = 0;
+        if (laughter > 100)
+            laughter = 100;
     }
-    IEnumerator RemoveLaughter()
+   /* IEnumerator RemoveLaughter()
     {
         
         yield return new WaitForSeconds(10);
         Debug.Log("The king is bored");
         laughter = laughter - 10;
-    }
+    }*/
 
 }

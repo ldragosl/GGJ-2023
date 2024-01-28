@@ -26,6 +26,8 @@ public class Order : MonoBehaviour
     public virtual void discard()
     {
         fulfilled = true;
+        GameObject.FindGameObjectWithTag("ScoreUI").GetComponent<ScoreController>().addScore(-1);
+        GameObject.Find("King").GetComponent<KingBehaviour>().AddLaughter(5);
         orderPlacer.AdvanceState();
     }
 }

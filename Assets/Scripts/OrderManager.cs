@@ -14,6 +14,10 @@ public class OrderManager : MonoBehaviour
     public void addOrder(Order order)
     {
         orders.Add(order);
+        if(orders.Count > 3)
+        {
+            GameObject.Find("King").GetComponent<KingBehaviour>().AddLaughter(5);
+        }
     }
 
     public bool fulfillNamedOrder(string orderName)
