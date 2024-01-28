@@ -6,9 +6,11 @@ public class Meat : PickupableObject
 {
     GrabObjects grabObjects;
     // Start is called before the first frame update
-    void Start()
+
+
+    void Awake()
     {
-        base.Start();
+        
         grabObjects = GrabObjects.singleton; 
     }
 

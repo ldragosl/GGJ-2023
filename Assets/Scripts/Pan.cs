@@ -14,6 +14,7 @@ public class Pan : PickupableObject
 
     public override void OnPickup()
     {
+        base.Start();
         base.OnPickup();
 
         GameObject[] rats = GameObject.FindGameObjectsWithTag("Rat");
