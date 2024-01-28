@@ -17,7 +17,6 @@ public class Order : MonoBehaviour
 
     public virtual void fulfill()
     {
-
     }
 
     public virtual void discard()
