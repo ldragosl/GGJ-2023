@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 606872183}
   isPicked: 0
+  isGenerator: 0
   LastPickedupTime: 0
 --- !u!1001 &105045131
 PrefabInstance:
@@ -2538,6 +2539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 606872183}
   isPicked: 0
+  isGenerator: 0
 --- !u!1001 &876164183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2795,15 +2797,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1856201523097552500, guid: 9e8542e1991b4564796a3494fec277b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.35401964
+      value: 2.45
       objectReference: {fileID: 0}
     - target: {fileID: 1856201523097552500, guid: 9e8542e1991b4564796a3494fec277b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.18
+      value: 0.933
       objectReference: {fileID: 0}
     - target: {fileID: 1856201523097552500, guid: 9e8542e1991b4564796a3494fec277b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.511
+      value: -4.255
       objectReference: {fileID: 0}
     - target: {fileID: 1856201523097552500, guid: 9e8542e1991b4564796a3494fec277b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4303,6 +4305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hand: {fileID: 606872183}
   isPicked: 0
+  isGenerator: 1
 --- !u!1001 &1795978525
 PrefabInstance:
   m_ObjectHideFlags: 0
