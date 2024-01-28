@@ -23,7 +23,7 @@ public class PickupableObject : MonoBehaviour
             transform.parent = hand;
             GetComponent<Collider>().enabled = false;
             isPicked = true;
-            inst.GetComponent<PickupableObject>().isGenerator = false;
+            isGenerator = false;
     }
 
     public virtual void OnPickup()
