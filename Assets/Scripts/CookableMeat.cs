@@ -32,7 +32,7 @@ public class CookableMeat : MonoBehaviour
         if(stove != null) { 
             if(Vector3.Distance(stove.transform.position, transform.position) < ditanceToCook)
             {
-                if (transform.parent.tag == "Pan")
+                if (transform.parent != null && transform.parent.tag == "Pan")
                 {
                     cookValue += Time.deltaTime / cookTime;
                     meatMat.color = Color.Lerp(rawColor, cookColor, cookValue);
