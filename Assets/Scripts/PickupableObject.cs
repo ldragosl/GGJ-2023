@@ -10,16 +10,13 @@ public class PickupableObject : MonoBehaviour
     public bool isGenerator = false;
     public void Start()
     {
-        if(GameObject.FindGameObjectWithTag("Hand"))
-        {
-            Debug.Log("Find Hand");
-        }
         hand = GameObject.FindGameObjectWithTag("Hand").transform;
         grabObject = GrabObjects.singleton;
     }
 
     void GenerateNew()
     {
+        
         if (isGenerator)
         {
             GameObject inst = Instantiate(gameObject, transform.position, transform.rotation);
@@ -29,15 +26,20 @@ public class PickupableObject : MonoBehaviour
 
     public virtual void OnPickup()
     {
-        GenerateNew();
+        
+        if(!isGenerator)
+        {
+            GenerateNew();
+            GetComponent<Rigidbody>().isKinematic = true;
+            transform.position = hand.position;
+            transform.rotation = Quaternion.Euler(-90, 0, 180);
+            transform.parent = hand;
+            GetComponent<Collider>().enabled = false;
+            isPicked = true;
+        }
+        
+        
 
-        GetComponent<Rigidbody>().isKinematic = true;
-        transform.position = hand.position;
-        transform.rotation = Quaternion.Euler(-90, 0, 180);
-        transform.parent = hand;
-        GetComponent<Collider>().enabled = false;
-        isPicked = true;
-        Debug.Log("PickUp");
     }
 
     public virtual void Drop()

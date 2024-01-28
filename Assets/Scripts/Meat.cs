@@ -17,14 +17,11 @@ public class Meat : PickupableObject
     public override void OnPickup()
     {
         base.OnPickup();
-        grabObjects.isPicked = true;
-        Debug.Log("Is picked");
     }
 
     public override void Drop()
     {
         base.Drop();
-        grabObjects.isPicked = false;
     }
 
     // Update is called once per frame
