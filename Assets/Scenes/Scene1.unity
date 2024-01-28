@@ -267,8 +267,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2494119, y: 0.02583371, z: 0.05057722}
-  m_Center: {x: -2.3859284e-10, y: -0.00020014627, z: 0.000000025016856}
+  m_Size: {x: 0.2494119, y: 0.24986695, z: 0.05057722}
+  m_Center: {x: 0, y: -0.0096267825, z: 0.000000024778258}
 --- !u!114 &42376652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,9 +710,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightSrc: {fileID: 163570171}
   minRange: 4
-  maxRange: 6
-  minTime: 2
-  maxTime: 5
+  maxRange: 8
+  minTime: 3
+  maxTime: 12
   t: 0
 --- !u!1 &167037623
 GameObject:
