@@ -43,7 +43,7 @@ public class GrabObjects : MonoBehaviour
                   
             if(currentItem)
             {
-                if (currentItem.tag == "Pan" && hasMeat == false)
+                if (currentItem.tag == "Pan" && hasMeat == false && hit.collider.gameObject.tag == "Meat")
                 {
                     currentMeat = hit.collider.gameObject;
                     // hit.collider.gameObject.transform.parent = currentItem.transform;
