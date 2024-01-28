@@ -13,10 +13,12 @@ public class NobleBehavior : MonoBehaviour
     private NoblePositions _positions;
     private NavMeshAgent _agent;
 
+    private int _seatIndex;
+    private int _waitIndex;
+
     private enum _states
     {
         Waiting,
-        Eating,
         Seated
     }
 
@@ -29,7 +31,8 @@ public class NobleBehavior : MonoBehaviour
 
     private void Start()
     {
-        _agent.destination = _positions.GetSeat().position;
+        _seatIndex = _positions.GetSeat();
+        _agent.destination = _positions._tablePositions[_seatIndex].position.position;
         _waitTime = Random.Range(_waitMin, _waitMax + 1);
     }
 
@@ -50,15 +53,20 @@ public class NobleBehavior : MonoBehaviour
         if (_currentState == _states.Waiting)
         {
             _currentState = _states.Seated;
-            _positions.FreeSeat("wait", _agent.destination);
-            _agent.destination = _agent.destination = _positions.GetSeat().position;
+            var temp = _positions._waitPositions[_waitIndex];
+            temp.taken = false;
+            _positions._waitPositions[_waitIndex] = temp;
+            _seatIndex = _positions.GetSeat();
+            _agent.destination = _positions._tablePositions[_seatIndex].position.position;
         }
-        else
+        if(_currentState == _states.Seated)
         {
             _currentState = _states.Waiting;
-            _positions.FreeSeat("seat", _agent.destination);
-            _agent.destination = _agent.destination = _positions.GetWaitPos().position;
-            _agent.destination = new Vector3(0, 0, 0);
+            var temp = _positions._tablePositions[_seatIndex];
+            temp.taken = false;
+            _positions._tablePositions[_waitIndex] = temp;
+            _waitIndex = _positions.GetWaitPos();
+            _agent.destination = _agent.destination = _positions._waitPositions[_waitIndex].position.position;
         }
     }
 }
