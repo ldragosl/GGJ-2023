@@ -11,6 +11,7 @@ public class ScoreController : MonoBehaviour
     public void addScore(int value)
     {
         score += value;
+        _text.text = "Score: " + score;
     }
 
     // Start is called before the first frame update

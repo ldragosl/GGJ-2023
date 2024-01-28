@@ -27,7 +27,11 @@ public class GrabObjects : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isPicked && currentItem == null)
+        {
+            isPicked = false;
+        }
+
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(mouseRay, out hit))
@@ -61,7 +65,7 @@ public class GrabObjects : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1) && isPicked == true)
         {
-            if (hit.collider.tag == "Stove")
+            if (hit.collider != null && hit.collider.tag == "Stove")
             {
                 if (currentItem.tag == "Pan")
                 {

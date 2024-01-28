@@ -19,7 +19,7 @@ public class Order : MonoBehaviour
     public virtual void fulfill()
     {
         fulfilled = true;
-        GameObject.Find("Score").GetComponent<ScoreController>().addScore(1);
+        GameObject.FindGameObjectWithTag("ScoreUI").GetComponent<ScoreController>().addScore(1);
         orderPlacer.AdvanceState();
     }
 
